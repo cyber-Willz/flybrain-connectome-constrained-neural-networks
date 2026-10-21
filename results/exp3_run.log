@@ -1,0 +1,47 @@
+# flybrain pipeline  (n = 512, seeds = 2, epochs = 300)
+
+connectome: 512 neurons, 9380 connected pairs (3.59% density), 40012 synapses, reciprocity 0.42, 27% inhibitory, max out/in degree 83/110
+
+
+## Experiment 3a: imputation — 30% of neurons recorded, a sample every 0.1 (n = 256; relative L2 error at held-out times; mean ± sd over 2 problems)
+
+[seed 0] exp3a data only                    unrecorded 1.1595  recorded 0.0726  loss 0.00618 (44s)
+[seed 0] exp3a physics, nominal W           unrecorded 0.8282  recorded 0.1258  loss 0.04979 (154s)
+[seed 0] exp3a physics, true W (oracle)     unrecorded 0.8411  recorded 0.1325  loss 0.05631 (152s)
+[seed 0] exp3a observer, nominal W          unrecorded 0.4378  recorded 0.0002  loss NaN (0s)
+[seed 0] exp3a observer, learned W          unrecorded 0.3627  recorded 0.0002  loss 0.00001 (61s)
+[seed 0] exp3a observer, true W (oracle)    unrecorded 0.0004  recorded 0.0002  loss NaN (0s)
+[seed 1] exp3a data only                    unrecorded 1.6466  recorded 0.1802  loss 0.06298 (42s)
+[seed 1] exp3a physics, nominal W           unrecorded 0.9616  recorded 0.1801  loss 0.05693 (151s)
+[seed 1] exp3a physics, true W (oracle)     unrecorded 0.9476  recorded 0.1124  loss 0.07596 (177s)
+[seed 1] exp3a observer, nominal W          unrecorded 0.5216  recorded 0.0001  loss NaN (0s)
+[seed 1] exp3a observer, learned W          unrecorded 0.6267  recorded 0.0001  loss 0.00001 (69s)
+[seed 1] exp3a observer, true W (oracle)    unrecorded 0.0003  recorded 0.0001  loss NaN (0s)
+| variant | unrecorded neurons | recorded neurons |
+|---|---:|---:|
+| SHPINN, data only | 1.4031 ± 0.2435 | 0.1264 ± 0.0538 |
+| SHPINN, physics, nominal W | 0.8949 ± 0.0667 | 0.1529 ± 0.0272 |
+| SHPINN, physics, true W (oracle) | 0.8944 ± 0.0532 | 0.1224 ± 0.0101 |
+| observer, nominal W | 0.4797 ± 0.0419 | 0.0001 ± 0.0000 |
+| observer, learned W | 0.4947 ± 0.1320 | 0.0001 ± 0.0000 |
+| observer, true W (oracle) | 0.0003 ± 0.0000 | 0.0001 ± 0.0000 |
+| linear interpolation (no network) | — | 0.0012 ± 0.0001 |
+| cubic interpolation (no network) | — | 0.0001 ± 0.0000 |
+| predict zero | 1.0000 | 1.0000 |
+
+## Experiment 3b: temporal super-resolution — all neurons recorded, a sample every 0.5 (n = 256; relative L2 error at held-out times; mean ± sd over 2 problems)
+
+[seed 0] exp3b data only                    unrecorded NaN  recorded 0.1539  loss 0.07745 (49s)
+[seed 0] exp3b physics, nominal W           unrecorded NaN  recorded 0.3924  loss 0.19329 (150s)
+[seed 0] exp3b physics, true W (oracle)     unrecorded NaN  recorded 0.3167  loss 0.22325 (155s)
+[seed 1] exp3b data only                    unrecorded NaN  recorded 0.2333  loss 0.11193 (43s)
+[seed 1] exp3b physics, nominal W           unrecorded NaN  recorded 0.2468  loss 0.10864 (178s)
+[seed 1] exp3b physics, true W (oracle)     unrecorded NaN  recorded 0.2327  loss 0.08567 (167s)
+| variant | unrecorded neurons | recorded neurons |
+|---|---:|---:|
+| SHPINN, data only | — | 0.1936 ± 0.0397 |
+| SHPINN, physics, nominal W | — | 0.3196 ± 0.0728 |
+| SHPINN, physics, true W (oracle) | — | 0.2747 ± 0.0420 |
+| linear interpolation (no network) | — | 0.0285 ± 0.0001 |
+| cubic interpolation (no network) | — | 0.0116 ± 0.0001 |
+| predict zero | 1.0000 | 1.0000 |

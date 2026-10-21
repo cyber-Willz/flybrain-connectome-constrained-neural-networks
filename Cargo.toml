@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["krylov_ds", "nbsc", "spectral_hypergraph", "shpinn", "flybrain"]
+
+[profile.release]
+lto = true
+opt-level = 3

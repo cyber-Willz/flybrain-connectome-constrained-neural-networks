@@ -1,0 +1,57 @@
+=== RUN: NBSC_DATASET=cora NBSC_SPLIT=canonical NBSC_DEPTHS=2 NBSC_N_SEEDS=3 NBSC_WEIGHT_DECAY=0.0 NBSC_ARCHS=nbsc,gcn NBSC_CSV_OUT=/home/claude/thesis_results.csv ===
+=== thesis_bench: dataset=cora split=canonical split_seeds=[0] depths=[2] n_seeds=3 weight_decay=0 normalize=false archs=["nbsc", "gcn"] epochs=150 ===
+
+--- cora [canonical]: n=2708, m=5278, classes=7, train=140, val=500, test=1000 ---
+  split=canonical depth=2 seed=0/3 nbsc...  done (260.1s) val=0.720 test=0.739
+  split=canonical depth=2 seed=0/3 gcn...  done (134.7s) val=0.740 test=0.759
+  split=canonical depth=2 seed=1/3 nbsc...  done (358.3s) val=0.714 test=0.722
+  split=canonical depth=2 seed=1/3 gcn...  done (228.9s) val=0.772 test=0.782
+  split=canonical depth=2 seed=2/3 nbsc...  done (397.7s) val=0.682 test=0.699
+  split=canonical depth=2 seed=2/3 gcn...  done (115.2s) val=0.742 test=0.762
+
+=== cora [canonical] depth 2 (wd=0) ===
+nbsc       | split canonical  | depth 2  | wd 0.0e0    | val 0.705+-0.017 | test 0.720+-0.016 | energy 10.8405+-0.3667 | n=3
+gcn        | split canonical  | depth 2  | wd 0.0e0    | val 0.751+-0.015 | test 0.768+-0.010 | energy 0.8668+-0.0727 | n=3
+=== RUN: NBSC_DATASET=cora NBSC_SPLIT=canonical NBSC_DEPTHS=1,3 NBSC_N_SEEDS=2 NBSC_WEIGHT_DECAY=0.0 NBSC_ARCHS=nbsc,gcn NBSC_CSV_OUT=/home/claude/thesis_results.csv ===
+=== thesis_bench: dataset=cora split=canonical split_seeds=[0] depths=[1, 3] n_seeds=2 weight_decay=0 normalize=false archs=["nbsc", "gcn"] epochs=150 ===
+
+--- cora [canonical]: n=2708, m=5278, classes=7, train=140, val=500, test=1000 ---
+  split=canonical depth=1 seed=0/2 nbsc...  done (232.5s) val=0.690 test=0.657
+  split=canonical depth=1 seed=0/2 gcn...  done (143.7s) val=0.734 test=0.747
+  split=canonical depth=1 seed=1/2 nbsc...  done (268.2s) val=0.700 test=0.674
+  split=canonical depth=1 seed=1/2 gcn...  done (68.6s) val=0.730 test=0.761
+
+=== cora [canonical] depth 1 (wd=0) ===
+nbsc       | split canonical  | depth 1  | wd 0.0e0    | val 0.695+-0.005 | test 0.666+-0.009 | energy 4.9385+-0.3823 | n=2
+gcn        | split canonical  | depth 1  | wd 0.0e0    | val 0.732+-0.002 | test 0.754+-0.007 | energy 1.2335+-0.0100 | n=2
+  split=canonical depth=3 seed=0/2 nbsc...  done (380.3s) val=0.666 test=0.655
+  split=canonical depth=3 seed=0/2 gcn...  done (175.9s) val=0.688 test=0.727
+  split=canonical depth=3 seed=1/2 nbsc...  done (335.3s) val=0.668 test=0.681
+  split=canonical depth=3 seed=1/2 gcn...  done (154.5s) val=0.688 test=0.712
+
+=== cora [canonical] depth 3 (wd=0) ===
+nbsc       | split canonical  | depth 3  | wd 0.0e0    | val 0.667+-0.001 | test 0.668+-0.013 | energy 12.1500+-0.0669 | n=2
+gcn        | split canonical  | depth 3  | wd 0.0e0    | val 0.688+-0.000 | test 0.720+-0.007 | energy 1.1686+-0.0896 | n=2
+=== RUN: NBSC_DATASET=citeseer NBSC_SPLIT=canonical NBSC_DEPTHS=2 NBSC_N_SEEDS=3 NBSC_WEIGHT_DECAY=0.0 NBSC_ARCHS=nbsc,gcn NBSC_CSV_OUT=/home/claude/thesis_results.csv ===
+=== thesis_bench: dataset=citeseer split=canonical split_seeds=[0] depths=[2] n_seeds=3 weight_decay=0 normalize=false archs=["nbsc", "gcn"] epochs=150 ===
+
+--- citeseer [canonical]: n=3327, m=4552, classes=6, train=120, val=500, test=1000 ---
+  split=canonical depth=2 seed=0/3 nbsc...  done (719.8s) val=0.522 test=0.559
+  split=canonical depth=2 seed=0/3 gcn...  done (323.9s) val=0.560 test=0.549
+  split=canonical depth=2 seed=1/3 nbsc...  done (725.5s) val=0.568 test=0.572
+  split=canonical depth=2 seed=1/3 gcn...  done (325.3s) val=0.592 test=0.611
+  split=canonical depth=2 seed=2/3 nbsc...  done (726.9s) val=0.586 test=0.555
+  split=canonical depth=2 seed=2/3 gcn...  done (344.9s) val=0.650 test=0.650
+
+=== citeseer [canonical] depth 2 (wd=0) ===
+nbsc       | split canonical  | depth 2  | wd 0.0e0    | val 0.559+-0.027 | test 0.562+-0.007 | energy 6.7663+-0.4145 | n=3
+gcn        | split canonical  | depth 2  | wd 0.0e0    | val 0.601+-0.037 | test 0.603+-0.042 | energy 0.3499+-0.0075 | n=3
+=== RUN: NBSC_DATASET=citeseer NBSC_SPLIT=canonical NBSC_DEPTHS=1,3 NBSC_N_SEEDS=2 NBSC_WEIGHT_DECAY=0.0 NBSC_ARCHS=nbsc,gcn NBSC_CSV_OUT=/home/claude/thesis_results.csv ===
+=== thesis_bench: dataset=citeseer split=canonical split_seeds=[0] depths=[1, 3] n_seeds=2 weight_decay=0 normalize=false archs=["nbsc", "gcn"] epochs=150 ===
+
+--- citeseer [canonical]: n=3327, m=4552, classes=6, train=120, val=500, test=1000 ---
+  split=canonical depth=1 seed=0/2 nbsc...  === RUN: NBSC_DATASET=cora NBSC_SPLIT=canonical NBSC_DEPTHS=2 NBSC_N_SEEDS=3 NBSC_WEIGHT_DECAY=5e-4 NBSC_ARCHS=nbsc,gcn NBSC_CSV_OUT=/home/claude/thesis_results.csv ===
+=== thesis_bench: dataset=cora split=canonical split_seeds=[0] depths=[2] n_seeds=3 weight_decay=0.0005 normalize=false archs=["nbsc", "gcn"] epochs=150 ===
+
+--- cora [canonical]: n=2708, m=5278, classes=7, train=140, val=500, test=1000 ---
+  split=canonical depth=2 seed=0/3 nbsc...  

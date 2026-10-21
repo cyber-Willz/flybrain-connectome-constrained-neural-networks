@@ -1,0 +1,16 @@
+# flybrain pipeline  (n = 512, seeds = 2, epochs = 300)
+
+connectome: 512 neurons, 9380 connected pairs (3.59% density), 40012 synapses, reciprocity 0.42, 27% inhibitory, max out/in degree 83/110
+
+
+## Experiment 3c: observer vs interpolation as recordings get noisier / sparser (30% recorded, n = 256, mean over 2 problems; unrecorded-neuron error | recorded-neuron error)
+
+| sample every | noise sd | observer nominal | observer learned | observer oracle | cubic interp (recorded) | linear interp (recorded) |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.10 | 0.00 | 0.480 | 0.495 | 0.000 | 0.000 | 0.001 |
+| 0.10 | 0.05 | 0.479 | 1.347 | 0.023 | 0.243 | 0.216 |
+| 0.10 | 0.15 | 0.481 | 2.021 | 0.068 | 0.729 | 0.648 |
+| 0.30 | 0.00 | 0.480 | 0.496 | 0.000 | 0.003 | 0.011 |
+| 0.30 | 0.05 | 0.481 | 1.406 | 0.041 | 0.237 | 0.210 |
+| 0.30 | 0.15 | 0.491 | 2.114 | 0.123 | 0.713 | 0.631 |
+| 0.50 | 0.00 | 0.480 | 0.500 | 0.001 | 0.012 | 0.029 |

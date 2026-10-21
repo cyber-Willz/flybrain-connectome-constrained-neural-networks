@@ -1,0 +1,90 @@
+# flybrain pipeline  (n = 512, seeds = 3, epochs = 300)
+
+connectome: 512 neurons, 9380 connected pairs (3.59% density), 40012 synapses, reciprocity 0.42, 27% inhibitory, max out/in degree 83/110
+
+[seed 0] exp1 connectome-constrained                           train 0.0008  test 0.0016  (40s)
+[seed 0] exp1 connectome-constrained + energy reg (λ=0.003)    train 0.0024  test 0.0033  (76s)
+[seed 0] exp1 random wiring, same density                      train 0.0576  test 0.1003  (40s)
+[seed 0] exp1 dense unconstrained                              train 0.0003  test 0.3892  (40s)
+[seed 0] exp2 connectome-constrained                           test(all) 0.0905  test(unrecorded) 0.1318  (40s)
+[seed 0] exp2 random wiring                                    test(all) 1.0896  test(unrecorded) 1.5510  (40s)
+[seed 0] exp2 dense unconstrained                              test(all) 0.4683  test(unrecorded) 0.5111  (40s)
+[seed 1] exp1 connectome-constrained                           train 0.0009  test 0.0016  (41s)
+[seed 1] exp1 connectome-constrained + energy reg (λ=0.003)    train 0.0022  test 0.0029  (78s)
+[seed 1] exp1 random wiring, same density                      train 0.0553  test 0.0911  (41s)
+[seed 1] exp1 dense unconstrained                              train 0.0003  test 0.4125  (41s)
+[seed 1] exp2 connectome-constrained                           test(all) 0.1165  test(unrecorded) 0.1520  (40s)
+[seed 1] exp2 random wiring                                    test(all) 1.1567  test(unrecorded) 1.4697  (42s)
+[seed 1] exp2 dense unconstrained                              test(all) 0.4694  test(unrecorded) 0.4460  (41s)
+[seed 2] exp1 connectome-constrained                           train 0.0008  test 0.0015  (41s)
+[seed 2] exp1 connectome-constrained + energy reg (λ=0.003)    train 0.0019  test 0.0028  (77s)
+[seed 2] exp1 random wiring, same density                      train 0.0563  test 0.1006  (41s)
+[seed 2] exp1 dense unconstrained                              train 0.0003  test 0.3940  (42s)
+[seed 2] exp2 connectome-constrained                           test(all) 0.0837  test(unrecorded) 0.1264  (41s)
+[seed 2] exp2 random wiring                                    test(all) 1.1012  test(unrecorded) 1.6097  (41s)
+[seed 2] exp2 dense unconstrained                              test(all) 0.4589  test(unrecorded) 0.4978  (41s)
+
+## Experiment 1 — teacher-student, all neurons recorded (relative MSE; lower is better; mean ± sd over 3 teachers)
+
+| student | learned params | train | held-out stimuli | θ recovery (r) |
+|---|---:|---:|---:|---:|
+| connectome-constrained | 9380 | 0.0008 ± 0.0000 | 0.0016 ± 0.0000 | 0.3690 ± 0.0106 |
+| connectome-constrained + energy reg (λ=0.003) | 9380 | 0.0022 ± 0.0002 | 0.0030 ± 0.0002 | 0.3595 ± 0.0117 |
+| random wiring, same density | 9380 | 0.0564 ± 0.0009 | 0.0974 ± 0.0044 | — |
+| dense unconstrained | 261632 | 0.0003 ± 0.0000 | 0.3986 ± 0.0100 | — |
+
+## Experiment 2 — 30% of neurons recorded; error on the 70% never seen
+
+| student | held-out, all neurons | held-out, unrecorded neurons | θ recovery (r) |
+|---|---:|---:|---:|
+| connectome-constrained | 0.0969 ± 0.0142 | 0.1367 ± 0.0110 | 0.2466 ± 0.0083 |
+| random wiring, same density | 1.1159 ± 0.0293 | 1.5434 ± 0.0574 | — |
+| dense unconstrained | 0.4656 ± 0.0047 | 0.4850 ± 0.0281 | — |
+
+## Dirichlet energy per unrolled step (held-out stimuli, seed-mean; normalised as in nbsc::burn_layer::dirichlet_energy)
+
+| source | step 1 | step 5 | step 10 | step 15 | step 20 |
+|---|---:|---:|---:|---:|---:|
+| teacher (target) | 1.071 | 1.064 | 1.108 | 1.152 | 1.182 |
+| connectome-constrained | 1.074 | 1.067 | 1.107 | 1.146 | 1.172 |
+| connectome-constrained + energy reg (λ=0.003) | 1.029 | 1.021 | 1.056 | 1.093 | 1.117 |
+| random wiring, same density | 1.125 | 1.106 | 1.118 | 1.137 | 1.153 |
+| dense unconstrained | 1.008 | 1.044 | 1.179 | 1.292 | 1.363 |
+
+## Experiment 3a: imputation — 30% of neurons recorded, a sample every 0.1 (n = 256; relative L2 error at held-out times; mean ± sd over 3 problems)
+
+[seed 0] exp3a data only                    unrecorded 1.1345  recorded 0.0916  loss 0.01348 (34s)
+[seed 0] exp3a physics, nominal W           unrecorded 0.7656  recorded 0.0763  loss 0.03598 (126s)
+[seed 0] exp3a physics, true W (oracle)     unrecorded 0.7879  recorded 0.0879  loss 0.03899 (126s)
+[seed 1] exp3a data only                    unrecorded 1.6464  recorded 0.1039  loss 0.02394 (35s)
+[seed 1] exp3a physics, nominal W           unrecorded 0.9116  recorded 0.1052  loss 0.04702 (123s)
+[seed 1] exp3a physics, true W (oracle)     unrecorded 0.8573  recorded 0.2104  loss 0.07521 (125s)
+[seed 2] exp3a data only                    unrecorded 1.2663  recorded 0.0793  loss 0.00920 (33s)
+[seed 2] exp3a physics, nominal W           unrecorded 0.8242  recorded 0.0968  loss 0.03389 (125s)
+[seed 2] exp3a physics, true W (oracle)     unrecorded 0.8002  recorded 0.0740  loss 0.03326 (123s)
+| variant | unrecorded neurons | recorded neurons |
+|---|---:|---:|
+| data only | 1.3491 ± 0.2170 | 0.0916 ± 0.0100 |
+| physics, nominal W | 0.8338 ± 0.0600 | 0.0928 ± 0.0121 |
+| physics, true W (oracle) | 0.8152 ± 0.0303 | 0.1241 ± 0.0613 |
+| linear interpolation between samples (no network) | — | 0.0012 ± 0.0001 |
+| predict zero | 1.0000 | 1.0000 |
+
+## Experiment 3b: temporal super-resolution — all neurons recorded, a sample every 0.5 (n = 256; relative L2 error at held-out times; mean ± sd over 3 problems)
+
+[seed 0] exp3b data only                    unrecorded NaN  recorded 0.2187  loss 0.12590 (34s)
+[seed 0] exp3b physics, nominal W           unrecorded NaN  recorded 0.3988  loss 0.19927 (124s)
+[seed 0] exp3b physics, true W (oracle)     unrecorded NaN  recorded 0.2426  loss 0.12257 (126s)
+[seed 1] exp3b data only                    unrecorded NaN  recorded 0.2398  loss 0.11577 (34s)
+[seed 1] exp3b physics, nominal W           unrecorded NaN  recorded 0.2370  loss 0.10316 (128s)
+[seed 1] exp3b physics, true W (oracle)     unrecorded NaN  recorded 0.2388  loss 0.09456 (123s)
+[seed 2] exp3b data only                    unrecorded NaN  recorded 0.1610  loss 0.07083 (34s)
+[seed 2] exp3b physics, nominal W           unrecorded NaN  recorded 0.1475  loss 0.06385 (126s)
+[seed 2] exp3b physics, true W (oracle)     unrecorded NaN  recorded 0.1664  loss 0.07539 (124s)
+| variant | unrecorded neurons | recorded neurons |
+|---|---:|---:|
+| data only | — | 0.2065 ± 0.0333 |
+| physics, nominal W | — | 0.2611 ± 0.1040 |
+| physics, true W (oracle) | — | 0.2159 ± 0.0351 |
+| linear interpolation between samples (no network) | — | 0.0279 ± 0.0008 |
+| predict zero | 1.0000 | 1.0000 |

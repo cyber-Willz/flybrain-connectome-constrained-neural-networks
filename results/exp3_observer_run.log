@@ -1,0 +1,29 @@
+# flybrain pipeline  (n = 512, seeds = 2, epochs = 300)
+
+connectome: 512 neurons, 9380 connected pairs (3.59% density), 40012 synapses, reciprocity 0.42, 27% inhibitory, max out/in degree 83/110
+
+
+## Experiment 3a: imputation — 30% of neurons recorded, a sample every 0.1 (n = 256; relative L2 error at held-out times; mean ± sd over 2 problems)
+
+[seed 0] exp3a observer, nominal W          unrecorded 0.4378  recorded 0.0002  loss NaN (0s)
+[seed 0] exp3a observer, learned W          unrecorded 0.3812  recorded 0.0002  loss 0.00001 (64s)
+[seed 0] exp3a observer, true W (oracle)    unrecorded 0.0004  recorded 0.0002  loss NaN (0s)
+[seed 1] exp3a observer, nominal W          unrecorded 0.5216  recorded 0.0001  loss NaN (0s)
+[seed 1] exp3a observer, learned W          unrecorded 0.5216  recorded 0.0001  loss 0.00002 (75s)
+[seed 1] exp3a observer, true W (oracle)    unrecorded 0.0003  recorded 0.0001  loss NaN (0s)
+| variant | unrecorded neurons | recorded neurons |
+|---|---:|---:|
+| observer, nominal W | 0.4797 ± 0.0419 | 0.0001 ± 0.0000 |
+| observer, learned W | 0.4514 ± 0.0702 | 0.0001 ± 0.0000 |
+| observer, true W (oracle) | 0.0003 ± 0.0000 | 0.0001 ± 0.0000 |
+| linear interpolation (no network) | — | 0.0012 ± 0.0001 |
+| cubic interpolation (no network) | — | 0.0001 ± 0.0000 |
+| predict zero | 1.0000 | 1.0000 |
+
+## Experiment 3b: temporal super-resolution — all neurons recorded, a sample every 0.5 (n = 256; relative L2 error at held-out times; mean ± sd over 2 problems)
+
+| variant | unrecorded neurons | recorded neurons |
+|---|---:|---:|
+| linear interpolation (no network) | — | 0.0285 ± 0.0001 |
+| cubic interpolation (no network) | — | 0.0116 ± 0.0001 |
+| predict zero | 1.0000 | 1.0000 |

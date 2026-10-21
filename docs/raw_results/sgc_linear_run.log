@@ -1,0 +1,60 @@
+
+=== Citeseer (canonical Planetoid split): n=3327, m=4552, classes=6, f=3703, train=120, val=500, test=1000 ===
+rho_B (non-backtracking spectral radius) = 11.485396 (0.0s to estimate)
+NBSC taps [T_0..T_2] X computed (4.3s), concatenated width = 11109
+GCN taps [S^0..S^2] X computed (5.7s), concatenated width = 11109
+
+  NBSC-linear  wd=0.0e0    | val 0.539+-0.022 | test 0.533+-0.019 (n_seeds=3)
+  NBSC-linear  wd=1.0e-4   | val 0.539+-0.022 | test 0.533+-0.020 (n_seeds=3)
+  NBSC-linear  wd=5.0e-4   | val 0.540+-0.023 | test 0.533+-0.019 (n_seeds=3)
+  NBSC-linear  wd=1.0e-3   | val 0.542+-0.024 | test 0.533+-0.019 (n_seeds=3)
+  NBSC-linear  wd=1.0e-2   | val 0.547+-0.017 | test 0.540+-0.018 (n_seeds=3)
+  NBSC-linear  BEST (by val): wd=1.0e-2   | test 0.540+-0.018
+
+  (NBSC-linear grid: 188.3s)
+  GCN-linear   wd=0.0e0    | val 0.600+-0.014 | test 0.601+-0.005 (n_seeds=3)
+  GCN-linear   wd=1.0e-4   | val 0.600+-0.014 | test 0.601+-0.005 (n_seeds=3)
+  GCN-linear   wd=5.0e-4   | val 0.599+-0.015 | test 0.602+-0.005 (n_seeds=3)
+  GCN-linear   wd=1.0e-3   | val 0.600+-0.014 | test 0.602+-0.005 (n_seeds=3)
+  GCN-linear   wd=1.0e-2   | val 0.597+-0.004 | test 0.603+-0.005 (n_seeds=3)
+  GCN-linear   BEST (by val): wd=0.0e0    | test 0.601+-0.005
+
+  (GCN-linear grid: 185.1s)
+  raw (no-prop) wd=0.0e0    | val 0.427+-0.005 | test 0.420+-0.009 (n_seeds=3)
+  raw (no-prop) wd=1.0e-4   | val 0.427+-0.005 | test 0.420+-0.009 (n_seeds=3)
+  raw (no-prop) wd=5.0e-4   | val 0.427+-0.005 | test 0.421+-0.008 (n_seeds=3)
+  raw (no-prop) wd=1.0e-3   | val 0.427+-0.005 | test 0.420+-0.009 (n_seeds=3)
+  raw (no-prop) wd=1.0e-2   | val 0.429+-0.007 | test 0.425+-0.008 (n_seeds=3)
+  raw (no-prop) BEST (by val): wd=1.0e-2   | test 0.425+-0.008
+
+  (raw-feature grid: 61.4s)
+
+=== PubMed (canonical Planetoid split): n=19717, m=44324, classes=3, f=500, train=60, val=500, test=1000 ===
+rho_B (non-backtracking spectral radius) = 21.641972 (0.2s to estimate)
+NBSC taps [T_0..T_2] X computed (3.5s), concatenated width = 1500
+GCN taps [S^0..S^2] X computed (6.3s), concatenated width = 1500
+
+  NBSC-linear  wd=0.0e0    | val 0.719+-0.002 | test 0.715+-0.003 (n_seeds=3)
+  NBSC-linear  wd=1.0e-4   | val 0.719+-0.002 | test 0.715+-0.003 (n_seeds=3)
+  NBSC-linear  wd=5.0e-4   | val 0.719+-0.002 | test 0.716+-0.003 (n_seeds=3)
+  NBSC-linear  wd=1.0e-3   | val 0.719+-0.002 | test 0.715+-0.002 (n_seeds=3)
+  NBSC-linear  wd=1.0e-2   | val 0.723+-0.001 | test 0.712+-0.000 (n_seeds=3)
+  NBSC-linear  BEST (by val): wd=1.0e-2   | test 0.712+-0.000
+
+  (NBSC-linear grid: 10.7s)
+  GCN-linear   wd=0.0e0    | val 0.757+-0.002 | test 0.745+-0.001 (n_seeds=3)
+  GCN-linear   wd=1.0e-4   | val 0.757+-0.002 | test 0.745+-0.001 (n_seeds=3)
+  GCN-linear   wd=5.0e-4   | val 0.757+-0.002 | test 0.745+-0.001 (n_seeds=3)
+  GCN-linear   wd=1.0e-3   | val 0.757+-0.002 | test 0.745+-0.001 (n_seeds=3)
+  GCN-linear   wd=1.0e-2   | val 0.754+-0.002 | test 0.745+-0.001 (n_seeds=3)
+  GCN-linear   BEST (by val): wd=0.0e0    | test 0.745+-0.001
+
+  (GCN-linear grid: 8.4s)
+  raw (no-prop) wd=0.0e0    | val 0.643+-0.002 | test 0.683+-0.001 (n_seeds=3)
+  raw (no-prop) wd=1.0e-4   | val 0.643+-0.002 | test 0.683+-0.001 (n_seeds=3)
+  raw (no-prop) wd=5.0e-4   | val 0.643+-0.002 | test 0.683+-0.001 (n_seeds=3)
+  raw (no-prop) wd=1.0e-3   | val 0.643+-0.002 | test 0.683+-0.001 (n_seeds=3)
+  raw (no-prop) wd=1.0e-2   | val 0.643+-0.001 | test 0.683+-0.002 (n_seeds=3)
+  raw (no-prop) BEST (by val): wd=0.0e0    | test 0.683+-0.001
+
+  (raw-feature grid: 2.8s)

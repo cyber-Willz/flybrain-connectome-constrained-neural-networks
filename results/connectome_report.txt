@@ -1,0 +1,8 @@
+neurons: 512   connected pairs: 9380   synapses: 40012   modules: 8
+connectome             pairs   9380  recip 0.416  clust 0.128  maxOut  83 maxIn 110 | rho(W) 42.439  rho(|W|) 106.584  rho_B 39.274  ||A||/rho_B 1.034
+degree-preserving null pairs   9380  recip 0.059  clust 0.137  maxOut  83 maxIn 110 | rho(W) 35.306  rho(|W|) 102.633  rho_B 48.421  ||A||/rho_B 1.027
+density-matched random pairs   9380  recip 0.034  clust 0.079  maxOut  33 maxIn  35 | rho(W) 29.798  rho(|W|) 77.880  rho_B 37.838  ||A||/rho_B 1.028
+inhibitory fraction among projecting neurons: 0.27
+
+neuropil recovery from hypergraph-Laplacian eigenmap (k-means purity, chance ~ 0.12):
+  connectome 0.545   degree-preserving null 0.141   density-matched random 0.195

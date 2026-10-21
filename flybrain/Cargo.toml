@@ -1,0 +1,27 @@
+[package]
+name = "flybrain"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "Connectome-constrained neural networks for fruit-fly-brain wiring diagrams: directed/signed/weighted connectome model, NBSC spectral diagnostics, energy-monitored deep (unrolled) dynamics, and a SHPINN continuous-time surrogate."
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+spectral_hypergraph = { path = "../spectral_hypergraph" }
+krylov_ds = { path = "../krylov_ds" }
+shpinn = { path = "../shpinn" }
+nbsc = { path = "../nbsc", default-features = false, features = ["burn"] }
+nalgebra = "0.32"
+rand = "0.8"
+rand_distr = "0.4"
+thiserror = "1"
+burn = { version = "0.13", default-features = false, features = ["ndarray", "autodiff", "std"] }
+
+[dev-dependencies]
+approx = "0.5"
+
+[[example]]
+name = "connectome_report"
+
+[[example]]
+name = "fly_pipeline"

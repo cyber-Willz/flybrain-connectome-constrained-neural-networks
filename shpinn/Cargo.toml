@@ -1,0 +1,59 @@
+[package]
+name = "shpinn"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "Spectral Hypergraph Physics-Informed Neural Networks (SHPINN): PINNs whose collocation coordinates are Laplacian-eigenmap embeddings of a spectral hypergraph, and whose spatial differential operator is the hypergraph's own (true, non-clique-expanded) normalized Laplacian."
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+spectral_hypergraph = { path = "../spectral_hypergraph" }
+krylov_ds = { path = "../krylov_ds" }
+nalgebra = "0.32"
+thiserror = "1"
+rand = "0.8"
+
+# Burn is required (unlike nbsc, where it's optional): a SHPINN is, by
+# definition, a trained neural network, so there is no meaningful
+# no-Burn build of this crate the way `nbsc --no-default-features` gives
+# you the pure-CPU spectral machinery alone. Pinned exactly as
+# `nbsc`/`energy_stable_llm` pin it for this workspace's rustc 1.75 floor.
+burn = { version = "0.13", default-features = false, features = ["ndarray", "autodiff", "std"] }
+
+# Optional bridge to `nbsc`'s non-backtracking (Hashimoto) spectral machinery:
+# lets a SHPINN swap its spatial operator from the symmetric hypergraph
+# Laplacian to the non-symmetric non-backtracking recursion, for governing
+# equations with a genuine directional/advective term (see
+# `physics::advective_residual`). Off by default: it pulls in `nbsc` and its
+# own `hypergraph` feature, which most SHPINN use cases (Poisson, heat, wave
+# on an undirected hypergraph) don't need.
+nbsc = { path = "../nbsc", default-features = false, features = ["burn", "hypergraph"], optional = true }
+
+[features]
+default = []
+nbsc-ops = ["dep:nbsc"]
+
+[dev-dependencies]
+approx = "0.5"
+
+[[example]]
+name = "poisson_demo"
+
+[[example]]
+name = "heat_demo"
+
+[[example]]
+name = "advection_demo"
+required-features = ["nbsc-ops"]
+
+[[example]]
+name = "helmholtz_demo"
+
+[[example]]
+name = "burgers_demo"
+
+[[example]]
+name = "burgers_spectral_demo"
+
+[[example]]
+name = "navier_stokes_demo"

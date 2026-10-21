@@ -1,0 +1,3 @@
+Cora       n=2708    m=5278    rho_B=9.0274     ||A||_2=14.3909    ||A||_2/rho_B=1.5941   (EXPANSIVE 0.0s)
+Citeseer   n=3327    m=4552    rho_B=11.4854    ||A||_2=13.7442    ||A||_2/rho_B=1.1967   (EXPANSIVE 0.1s)
+PubMed     n=19717   m=44324   rho_B=21.6420    ||A||_2=23.2383    ||A||_2/rho_B=1.0738   (EXPANSIVE 0.3s)
